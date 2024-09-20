@@ -182,9 +182,9 @@ end
 im_GRE_combo = squeeze( sum(conj(sens_map).* im_GRE, 4) ./ (eps +  sum(abs(sens_map).^2, 4)) );
 
 %% reduce Gibbs ringing
-for i = 1:size(im_GRE_combo,4)
-    im_GRE_combo(:,:,:,i) = unring(im_GRE_combo(:,:,:,i));
-end
+%for i = 1:size(im_GRE_combo,4)
+%    im_GRE_combo(:,:,:,i) = unring(im_GRE_combo(:,:,:,i));
+%end
 %%
 PHS = angle(im_GRE_combo);
 im_mean=abs(im_GRE_combo(:,:,:,1));
@@ -201,7 +201,8 @@ Phase0_odd_all=zeros(nx,npe,length(1:2:Necho),N_slice);
 Phase0_even_all=zeros(nx,npe,length(2:2:Necho),N_slice);
 
 for slice=1:N_slice
-    P_dB_all(:,:,slice) = dB_fitting_JumpCorrect_FLEET(squeeze(PHS(:,:,slice,:)),TEs_calib_use(:),logical(MSK_extended(:,:,slice)),1);
+    %P_dB_all(:,:,slice) = dB_fitting_JumpCorrect_FLEET(squeeze(PHS(:,:,slice,:)),TEs_calib_use(:),logical(MSK_extended(:,:,slice)),1);
+    P_dB_all(:,:,slice) = dB_fitting_JumpCorrect(squeeze(PHS(:,:,slice,:)),TEs_calib_use(:),logical(MSK_extended(:,:,slice)),1);
     num=0;
     tmp=[];
     for t = 1:2:Necho
