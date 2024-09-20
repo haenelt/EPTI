@@ -47,6 +47,7 @@
 %%
 clear;
 addpath(genpath('../funcs_EPTI'));
+addpath(genpath('../ESPIRiT'));
 %% bart path
 bart_path = ''; % path of BART toolbox
 setenv('TOOLBOX_PATH', bart_path);
