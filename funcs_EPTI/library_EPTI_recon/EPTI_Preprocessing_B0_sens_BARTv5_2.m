@@ -1,4 +1,4 @@
-function [sens_map_all,P_dB_all,Phase0_odd_all,Phase0_even_all,gccmtx_aligned,im_GRE_combo] = EPTI_Preprocessing_B0_sens_BARTv5(directory,filename,kdata_calib0,parameters,parameters_calib,save_data_flag,coilcompression_flag) 
+function [sens_map_all,P_dB_all,Phase0_odd_all,Phase0_even_all,gccmtx_aligned,im_GRE_combo] = EPTI_Preprocessing_B0_sens_BARTv5_2(kdata_calib0,parameters,parameters_calib,coilcompression_flag) 
 % Calculate the sensitivity map and B0 map for EPTI reconstruction
 % estimating using EPTI k-t calibraiton data
 % Support accelerated EPTI calibration scan
@@ -219,9 +219,4 @@ for slice=1:N_slice
 end
 %% save
 sens_map_all = single(sens_map);
-if save_data_flag
-    save_path = [directory,'data/1_Recon_subspace/'];
-    save([save_path,'PreRecon_SensB0Dephase_SMS_',filename,'.mat'],'sens_map_all','P_dB_all','Phase0_odd_all','Phase0_even_all',...
-        'gccmtx_aligned','-v7.3');
-end
 end
