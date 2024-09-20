@@ -162,7 +162,7 @@ kdata_calib = squeeze(kdata_calib);
 save(fullfile(subdir1_acq,['meas_prot_Calib_',save_filename,'.mat']),'parameters_calib');
 
 disp('---------------- Calculating sensitivity and B0 ----------------');
-[sens_map_all,P_dB_all,Phase0_odd_all,Phase0_even_all,gccmtx_aligned,im_GRE_comb] = EPTI_Preprocessing_B0_sens_BARTv5(kdata_calib,meas.prot,parameters_calib,espirit_num_acs,espirit_c);
+[sens_map_all,P_dB_all,Phase0_odd_all,Phase0_even_all,gccmtx_aligned,im_GRE_comb] = EPTI_Preprocessing_B0_sens_BARTv5_2(kdata_calib,meas.prot,parameters_calib,espirit_num_acs,espirit_c);
 save(fullfile(subdir1_acq,['PreRecon_SensB0_',save_filename,'.mat']),'sens_map_all','P_dB_all','Phase0_odd_all','Phase0_even_all','gccmtx_aligned','im_GRE_comb','-v7.3');
 %% image reconstruction (dynamic loop)
 disp('---------------- EPTI Image Reconstruction start ----------------');
